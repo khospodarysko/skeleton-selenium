@@ -6,12 +6,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import org.assertj.core.api.AbstractAssert;
+import org.openqa.selenium.WebDriver;
 
 public class DatePickerPage {
     private DatePickerElement datePicker;
 
-    public DatePickerPage() {
-        datePicker = new DatePickerElement();
+    /*
+     * The main reason to pass WebDriver instance into page object is the
+     * ability to create the same page with different driver.
+     */
+    public DatePickerPage(WebDriver driver) {
+        datePicker = new DatePickerElement(driver);
     }
 
     public void openCalendar() {
@@ -38,8 +43,10 @@ public class DatePickerPage {
         datePicker.selectDay(day);
     }
 
+    /*
+     * Custom AssertJ assertion specific only to this page.
+     */
     public static class DatePickerPageAssert extends AbstractAssert<DatePickerPageAssert, DatePickerPage> {
-
         public DatePickerPageAssert(DatePickerPage actual) {
             super(actual, DatePickerPageAssert.class);
         }

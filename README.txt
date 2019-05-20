@@ -15,7 +15,7 @@ TODO
         - Steps
 
 - Page chaining
-    - to easy a bit method invocation in related group of actions
+    - method invocation in related group of actions
 
 - Selenium
     - WebDriverEventListener
